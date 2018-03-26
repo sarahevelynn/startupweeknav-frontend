@@ -6,17 +6,18 @@ import Form from "./CardForm";
 class FormIndex extends Component {
   render() {
     return (
-      <View style={{flex: -1}}>
-      <Header />
-      <Form />
+      <View>
+        <View style={styles.header} />
+        <Header />
+        <Form />
       </View>
-
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  header: {
+    height: 65
   }
 });
 

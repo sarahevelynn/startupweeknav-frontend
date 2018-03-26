@@ -33,14 +33,8 @@ export default class CardsList extends React.Component {
   renderDescription = card => {
     if (this.state.toggle) {
       return (
-        <View style={styles.containerStyle}>
-          <View style={styles.cardImageContainerStyle}>
-            <Image style={styles.cardImageStyle} source={{ uri: card.image }} />
-          </View>
-
-          <View style={{ flexDirection: "row" }}>
-            <Text style={styles.cardTitleStyle}> {card.note} </Text>
-          </View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.cardDescriptionStyle}>{card.note}</Text>
         </View>
       );
     } else {
@@ -60,8 +54,14 @@ export default class CardsList extends React.Component {
             <View>
               <Text style={styles.cardNumStyle}>{card.priority}</Text>
             </View>
+            <View>
+              <Image
+                style={styles.cardImageStyle}
+                source={{ uri: card.image }}
+              />
+            </View>
 
-            <View style={styles.cardContentStyle}>
+            <View>
               <View>
                 <Text style={styles.cardInfoStyle}>{card.category}</Text>
               </View>
@@ -69,7 +69,7 @@ export default class CardsList extends React.Component {
                 onPress={() => this._onPress(card)}
                 style={styles.descriptionButton}
               >
-                <Text> Tap to Expand Information </Text>
+                <Text style={styles.textStyle}>Tap to See Note</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -92,9 +92,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 4,
     borderColor: "#d6d7da",
-    marginTop: 5
   },
   containerStyle: {
+    backgroundColor: "#dce2e2",
     flexDirection: "row",
     flex: 1,
     flexWrap: "nowrap",
@@ -105,39 +105,54 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 5,
-    paddingRight: 15
+    paddingRight: 15,
+    color: "#0b3331",
+    fontWeight: "bold"
   },
   cardImageStyle: {
     height: 100,
     width: 100,
-    margin: 15,
-    borderWidth: 5,
-    borderColor: "#41918d"
-  },
-  cardContentStyle: {
-    flexDirection: "column",
-    flexWrap: "wrap"
+    margin: 10,
+    marginLeft: 0,
+    borderWidth: 7,
+    borderColor: "#105b57"
   },
   cardInfoStyle: {
     flexDirection: "row",
     flexWrap: "wrap",
     paddingBottom: 10,
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 17,
+    fontWeight: "bold"
   },
   descriptionButton: {
-    flex: 1,
-    alignSelf: "stretch",
-    backgroundColor: "#fff",
+    backgroundColor: "#cae8e6",
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#063835",
-    marginLeft: 5,
-    marginRight: 5,
+    width: 150
   },
-  cardTitleStyle: {
+  descriptionContainer: {
+    flexDirection: "row",
+    backgroundColor: "#979b9b",
+    borderRadius: 4,
+    borderWidth: 4,
+    borderColor: "#d6d7da",
+    borderTopWidth: 0,
+  },
+  cardDescriptionStyle: {
     flexWrap: "wrap",
-    paddingBottom: 10,
     flex: 1,
+    textAlign: "center",
+    fontSize: 19,
+    fontWeight: "500",
+    padding: 5
+  },
+  textStyle: {
+    alignSelf: "center",
+    color: "#063835",
+    fontSize: 15,
+    fontWeight: "700",
+    paddingTop: 10,
+    paddingBottom: 10
   }
 });
