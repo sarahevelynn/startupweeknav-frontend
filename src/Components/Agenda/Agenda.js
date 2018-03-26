@@ -49,7 +49,8 @@ export default class Agenda extends React.Component {
     let swipeBtns = [
       {
         text: "Delete",
-        backgroundColor: "red",
+        backgroundColor: "#842525",
+        color: "white",
         onPress: () => {
           this.deleteEvent(eventId);
         }
@@ -59,6 +60,7 @@ export default class Agenda extends React.Component {
       <Swipeout
         right={swipeBtns}
         autoClose={true}
+        buttonWidth={60}
         backgroundColor="transparent"
         style={styles.deleteSwipe}
       >
