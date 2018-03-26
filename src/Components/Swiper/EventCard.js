@@ -75,6 +75,10 @@ const styles = {
   cardTicketStyle: {
     flexDirection: "row",
     justifyContent: "space-around"
+  },
+  buttons: {
+    flex: 1,
+    justifyContent: "space-around"
   }
 };
 

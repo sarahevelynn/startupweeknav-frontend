@@ -3,7 +3,7 @@ import { ScrollView, View, Text, StyleSheet } from "react-native";
 import axios from "axios";
 import CardDetail from "./CardDetail";
 
-class CardList extends Component {
+class CardListIndex extends Component {
   state = { cards: [] };
 
   componentWillMount() {
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CardList;
+export default CardListIndex;

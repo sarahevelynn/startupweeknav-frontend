@@ -4,7 +4,7 @@ import { TabNavigator } from "react-navigation";
 import Header from "./src/Components/HeaderFooter/Header";
 import AgendaIndex from "./src/Components/Agenda/Index";
 import SwipeIndex from "./src/Components/Swiper/Index";
-import LeadsIndex from "./src/Components/Cards/Index";
+import LeadsInex from "./src/Components/Leads/Index";
 
 class EventScreen extends React.Component {
   render() {
@@ -25,7 +25,7 @@ class AgendaScreen extends React.Component {
 class LeadsScreen extends React.Component {
   render() {
     return (
-      <LeadsIndex />
+      <LeadsInex />
     );
   }
 }
