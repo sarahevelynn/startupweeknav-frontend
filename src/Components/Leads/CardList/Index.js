@@ -17,6 +17,6 @@ export default class AgendaIndex extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    height: 65
+    height: 90
   }
 });

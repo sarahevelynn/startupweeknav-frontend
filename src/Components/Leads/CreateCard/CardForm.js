@@ -16,22 +16,22 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      priority: 1,
-      catagory: "I can help them",
-      note: "special note here",
+      priority: 0,
+      catagory: "",
+      note: "",
       image: null,
       cards: []
     };
   }
 
-getData = () => {
-  axios({
-    method: "GET",
-    url: baseURL
-  })
-    .then(response => this.setState({ cards: response.data.startupcards }))
-    .catch(err => console.error(err));
-};
+  getData = () => {
+    axios({
+      method: "GET",
+      url: baseURL
+    })
+      .then(response => this.setState({ cards: response.data.startupcards }))
+      .catch(err => console.error(err));
+  };
 
   sendInfo = () => {
     axios
@@ -50,9 +50,8 @@ getData = () => {
     let { image } = this.state;
 
     return (
-      <View >
+      <View>
         <View>
-          <Text style={styles.textStyle}> Assign Priority to Contact </Text>
           <Picker
             style={styles.PickerStyle}
             itemStyle={styles.itemStyle}
@@ -61,6 +60,7 @@ getData = () => {
               this.setState({ priority: itemValue })
             }
           >
+            <Picker.Item label="Assign Priority to Contact" value={1} />
             <Picker.Item label="1-High Priority" value={1} />
             <Picker.Item label="2" value={2} />
             <Picker.Item label="3" value={3} />
@@ -70,7 +70,6 @@ getData = () => {
         </View>
 
         <View>
-          <Text style={styles.textStyle}> Assign Category to Contact </Text>
           <Picker
             style={styles.PickerStyle}
             itemStyle={styles.itemStyle}
@@ -79,6 +78,7 @@ getData = () => {
               this.setState({ category: itemValue })
             }
           >
+            <Picker.Item label="Assign Category to Contact" />
             <Picker.Item label="I can help them" value="I can help them" />
             <Picker.Item label="They can help me" value="They can help me" />
             <Picker.Item
@@ -106,19 +106,21 @@ getData = () => {
             {image && (
               <Image
                 source={{ uri: image }}
-                style={{ width: 100, height: 100 }}
+                style={{
+                  width: 100,
+                  height: 100,
+                  justifyContent: "space-between"
+                }}
               />
             )}
           </Button>
         </View>
 
+        <View style={{ height: 10 }} />
         <View>
-          <Text style={styles.textStyle}> Add Contact to Database </Text>
-          <View>
-            <Button onPress={() => this.sendInfo()}>
-              <Text>Add</Text>
-            </Button>
-          </View>
+          <Button onPress={() => this.sendInfo()}>
+            <Text>Add Contact to Database</Text>
+          </Button>
         </View>
       </View>
     );
@@ -132,24 +134,33 @@ getData = () => {
     console.log(result);
 
     if (!result.cancelled) {
-      this.setState({ image: "https://s3-us-west-1.amazonaws.com/startupweekcards/card8.jpeg" });
+      this.setState({
+        image: "https://s3-us-west-1.amazonaws.com/startupweekcards/card8.jpeg"
+      });
     }
   };
 }
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize: 20
+    fontSize: 24,
+    fontWeight: "500",
+    paddingTop: 4,
+    paddingBottom: 4,
+    color: "#393a3a"
   },
   PickerStyle: {
-    height: 44
+    height: 90,
+    borderBottomWidth: 2,
+    borderColor: "#696b6b"
   },
-  itemStyle: { height: 44 },
+  itemStyle: { height: 90 },
   noteTextStyle: {
-    height: 80,
+    height: 50,
     borderRadius: 1,
-    borderWidth: 1,
-    borderColor: "#063835",
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: "#696b6b",
     fontSize: 20
   },
   imageButton: {

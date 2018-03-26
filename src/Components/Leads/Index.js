@@ -13,7 +13,7 @@ export default class LeadsInex extends React.Component {
       <NavigatorIOS
         initialRoute={{
           component: MyScene,
-          title: "Leads HomePage",
+          title: "",
           passProps: { index: 1 }
         }}
         style={{ flex: 1 }}
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   header: {
-    height: 65
+    height: 90
   },
   title: {
     fontSize: 30,
