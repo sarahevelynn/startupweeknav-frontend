@@ -6,6 +6,7 @@ import CardSection from "./CardSection";
 import CardContain from "./CardContain";
 
 const EventCard = ({ event }) => {
+
   const {
     image,
     eventName,

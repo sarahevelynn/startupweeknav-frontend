@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {Button, NavigatorIOS, Text, View, StyleSheet} from 'react-native';
+import React from "react";
+import PropTypes from "prop-types";
+import { NavigatorIOS, Text, View, StyleSheet } from "react-native";
 import Header from "../HeaderFooter/Header";
+import Button from "../General/Button";
 import FormIndex from "./CreateCard/Index";
 import CardListIndex from "./CardList/Index";
 
@@ -12,9 +13,9 @@ export default class LeadsInex extends React.Component {
         initialRoute={{
           component: MyScene,
           title: "Leads HomePage",
-          passProps: {index: 1},
+          passProps: { index: 1 }
         }}
-        style={{flex: 1}}
+        style={{ flex: 1 }}
       />
     );
   }
@@ -23,9 +24,9 @@ export default class LeadsInex extends React.Component {
 class MyScene extends React.Component {
   static propTypes = {
     route: PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired
     }),
-    navigator: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired
   };
 
   constructor(props, context) {
@@ -38,38 +39,36 @@ class MyScene extends React.Component {
     let nextIndex = ++this.props.index;
     this.props.navigator.push({
       component: FormIndex,
-      title: 'Scene ' + nextIndex,
-      passProps: {index: nextIndex},
+      title: "Add a Lead",
+      passProps: { index: nextIndex }
     });
   }
   _viewLeads() {
     let nextIndex = ++this.props.index;
     this.props.navigator.push({
       component: CardListIndex,
-      title: 'Scene ' + nextIndex,
-      passProps: {index: nextIndex},
+      title: "View Your Leads",
+      passProps: { index: nextIndex }
     });
   }
 
   render() {
     return (
       <View>
-      <Header style={styles.header}/>
-      <View style={styles.container}>
-        <Text>Here you can: {this.props.title}</Text>
-        <Button
-          onPress={this._addCard}
-          title="Take a Picture"
-        />
-        <Button
-          onPress={this._addCard}
-          title="Add a Card"
-        />
-        <Button
-          onPress={this._viewLeads}
-          title="View All Leads"
-        />
-      </View>
+        <View style={styles.header} />
+        <Header style={styles.header} />
+        <View style={styles.container}>
+          <Text style={styles.title}>Here you can: {this.props.title}</Text>
+          <View style={styles.button}>
+            <Button onPress={this._addCard}>Take a Picture</Button>
+          </View>
+          <View style={styles.button}>
+            <Button onPress={this._addCard}>Add a Card</Button>
+          </View>
+          <View style={styles.button}>
+            <Button onPress={this._viewLeads}>View All Leads</Button>
+          </View>
+        </View>
       </View>
     );
   }
@@ -81,9 +80,19 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 4,
     borderColor: "#d6d7da",
-    marginTop:5
+    marginTop: 5
   },
   header: {
-    marginTop:35
+    height: 65
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "bold"
+  },
+  button: {
+    paddingTop: 5,
+    paddingBottom: 5,
+    marginTop: 10,
+    marginBottom: 10
   }
 });
