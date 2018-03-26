@@ -101,12 +101,12 @@ getData = () => {
 
         <View>
           <Text style={styles.textStyle}> Attach their card picture </Text>
-          <Button onPress={this._pickImage} >
+          <Button onPress={this._pickImage} style={styles.imageButton}>
             Pick an image from camera roll
             {image && (
               <Image
                 source={{ uri: image }}
-                style={{ width: 200, height: 200 }}
+                style={{ width: 100, height: 100 }}
               />
             )}
           </Button>
@@ -151,5 +151,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#063835",
     fontSize: 20
+  },
+  imageButton: {
+    justifyContent: "center",
+    alignContent: "center"
   }
 });
