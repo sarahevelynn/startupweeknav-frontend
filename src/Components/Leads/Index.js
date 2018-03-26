@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NavigatorIOS, Text, View, StyleSheet } from "react-native";
+import { NavigatorIOS, Text, View, StyleSheet, Image } from "react-native";
 import Header from "../HeaderFooter/Header";
 import Button from "../General/Button";
 import FormIndex from "./CreateCard/Index";
 import CardListIndex from "./CardList/Index";
+import CameraScreenIndex from "./TakePicture/Index";
 
 export default class LeadsInex extends React.Component {
   render() {
@@ -33,6 +34,15 @@ class MyScene extends React.Component {
     super(props, context);
     this._addCard = this._addCard.bind(this);
     this._viewLeads = this._viewLeads.bind(this);
+    this._takePicture = this._takePicture.bind(this);
+  }
+  _takePicture() {
+    let nextIndex = ++this.props.index;
+    this.props.navigator.push({
+      component: CameraScreenIndex,
+      title: "Take a Picture",
+      passProps: { index: nextIndex }
+    });
   }
 
   _addCard() {
@@ -58,9 +68,11 @@ class MyScene extends React.Component {
         <View style={styles.header} />
         <Header style={styles.header} />
         <View style={styles.container}>
-          <Text style={styles.title}>Here you can: {this.props.title}</Text>
+          <Text style={styles.title}>
+            Please select one of the following: {this.props.title}
+          </Text>
           <View style={styles.button}>
-            <Button onPress={this._addCard}>Take a Picture</Button>
+            <Button onPress={this._takePicture}>Take a Picture</Button>
           </View>
           <View style={styles.button}>
             <Button onPress={this._addCard}>Add a Card</Button>
@@ -69,6 +81,7 @@ class MyScene extends React.Component {
             <Button onPress={this._viewLeads}>View All Leads</Button>
           </View>
         </View>
+        <Image source={require("./denver.png")} />
       </View>
     );
   }
@@ -87,7 +100,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textAlign: "center"
   },
   button: {
     paddingTop: 5,
