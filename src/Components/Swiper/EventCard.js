@@ -46,11 +46,11 @@ const EventCard = ({ event }) => {
           </CardSection>
 
           <CardSection>
-            <Button onPress={() => Linking.openURL(register)} value={register}>
-              Register(Y/N)
+            <Button >
+              {event.register}
             </Button>
             <Button
-              onPress={() => Linking.openURL(event.register)}
+              onPress={() => Linking.openURL(event.tickets)}
               value={event.tickets}
             >
               Get Tickets

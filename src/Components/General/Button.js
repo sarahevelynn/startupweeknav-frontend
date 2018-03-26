@@ -18,8 +18,7 @@ const styles = {
     color: "#063835",
     fontSize: 16,
     fontWeight: "700",
-    paddingTop: 10,
-    paddingBottom: 10
+    padding: 10,    
   },
   buttonStyle: {
     alignSelf: "stretch",
