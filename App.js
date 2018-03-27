@@ -16,8 +16,8 @@ export default (MainScreenNavigator = TabNavigator(
   {
     tabBarComponent: props => {
       return (
-        <Footer style={{ height: 77 }}>
-          <FooterTab style={{justifyContent:"space-around", paddingTop:3}}>
+        <Footer style={{height:45}}>
+          <FooterTab style={{ justifyContent: "space-around", paddingTop: 3 }}>
             <Icon.Button
               name="list-alt"
               iconLeft
@@ -25,6 +25,7 @@ export default (MainScreenNavigator = TabNavigator(
               vertical
               backgroundColor="#287573"
               size={25}
+              style={{justifyContent:"space-around"}}
               active={props.navigationState.index === 0}
               onPress={() => props.navigation.navigate("AgendaIndex")}
             >
@@ -64,11 +65,9 @@ export default (MainScreenNavigator = TabNavigator(
 
 const styles = {
   text: {
-    fontFamily: "Arial",
     fontSize: 20,
     color: "white",
     fontWeight: "bold",
-    alignContent: "center",
-    justifyContent: "center"
+    justifyContent: "space-around"
   }
 };

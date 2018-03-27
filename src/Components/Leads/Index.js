@@ -91,7 +91,7 @@ class MyScene extends React.Component {
               vertical
               size={40}
               backgroundColor="#287573"
-              onPress={this._takePicture}
+              onPress={this._addCard}
               style={styles.icon}
             >
               <Text style={styles.text}>Add a Lead</Text>

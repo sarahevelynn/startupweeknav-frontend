@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import { View, TextInput, Picker, Text, Image, StyleSheet } from "react-native";
+import { ButtonGroup } from "react-native-elements";
 import axios from "axios";
 import { ImagePicker } from "expo";
 import Button from "../../General/Button";
 
 class NoteText extends Component {
   render() {
-    return <TextInput {...this.props} editable={true} maxLength={400} />;
+    return (
+      <TextInput
+        {...this.props}
+        editable={true}
+        maxLength={400}
+        returnKeyType="done"
+      />
+    );
   }
 }
 
@@ -48,45 +56,33 @@ export default class Form extends Component {
 
   render() {
     let { image } = this.state;
+    const priorityButtons = [1, 2, 3, 4, 5];
+    const categoryButtons = ["I can help them", "They can help me", "General contact", "Other"];
 
     return (
       <View>
         <View>
-          <Picker
-            style={styles.PickerStyle}
-            itemStyle={styles.itemStyle}
-            selectedValue={this.state.priority}
-            onValueChange={(itemValue, itemIndex) =>
+        <Text style={styles.textStyle}> Assign Priority to Contact </Text>
+          <ButtonGroup
+            onPress={(itemValue, itemIndex) =>
               this.setState({ priority: itemValue })
             }
-          >
-            <Picker.Item label="Assign Priority to Contact" value={1} />
-            <Picker.Item label="1-High Priority" value={1} />
-            <Picker.Item label="2" value={2} />
-            <Picker.Item label="3" value={3} />
-            <Picker.Item label="4" value={4} />
-            <Picker.Item label="5-Low Priority" value={5} />
-          </Picker>
+            buttons={priorityButtons}
+            containerStyle={{ height: 40 }}
+          />
         </View>
 
         <View>
-          <Picker
-            style={styles.PickerStyle}
-            itemStyle={styles.itemStyle}
-            selectedValue={this.state.category}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({ category: itemValue })
-            }
-          >
-            <Picker.Item label="Assign Category to Contact" />
-            <Picker.Item label="I can help them" value="I can help them" />
-            <Picker.Item label="They can help me" value="They can help me" />
-            <Picker.Item
-              label="Good general contact"
-              value="Good general contact"
-            />
-            <Picker.Item label="Other" value="Other" />
-          </Picker>
+        <Text style={styles.textStyle}> Assign Category to Contact </Text>
+        <ButtonGroup
+          onPress={(itemValue, itemIndex) =>
+            this.setState({ category: itemValue })
+          }
+          buttons={categoryButtons}
+          containerStyle={{ height: 50 }}
+          textStyle={{textAlign:"center"}}
+          selectedButtonStyle={styles.imageButton}
+        />
         </View>
 
         <View>
@@ -101,15 +97,15 @@ export default class Form extends Component {
 
         <View>
           <Text style={styles.textStyle}> Attach their card picture </Text>
-          <Button onPress={this._pickImage} style={styles.imageButton}>
+          <Button onPress={this._pickImage}>
             Pick an image from camera roll
             {image && (
               <Image
                 source={{ uri: image }}
                 style={{
                   width: 100,
-                  height: 100,
-                  justifyContent: "space-between"
+                  height: 80,
+                  justifyContent: "center"
                 }}
               />
             )}
@@ -143,7 +139,7 @@ export default class Form extends Component {
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "500",
     paddingTop: 4,
     paddingBottom: 4,
@@ -164,7 +160,6 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   imageButton: {
-    justifyContent: "center",
-    alignContent: "center"
+    backgroundColor: "green",
   }
 });
