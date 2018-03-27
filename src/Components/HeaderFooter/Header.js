@@ -7,7 +7,7 @@ const Header = props => {
       <Image
       style={styles.imageStyle}
       resizeMode={'cover'}
-      source={require("./smallLogo.png")}
+      source={require("./small.logo.png")}
       />
     </View>
   );

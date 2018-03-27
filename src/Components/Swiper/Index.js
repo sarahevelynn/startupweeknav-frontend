@@ -38,7 +38,6 @@ export default class SwipeIndex extends React.Component {
       .then(response => this.setState({ events: response.data.startupevents }));
   };
 
-
   renderCard(event) {
     return (
       <View>
@@ -65,14 +64,15 @@ export default class SwipeIndex extends React.Component {
   render() {
     return (
       <View>
-      <Header />
-      <View style={styles.container}>
-        <EventDeck
-          data={this.state.events}
-          renderCard={this.renderCard}
-          renderNoMoreCards={this.renderNoMoreCards}
-        />
-      </View>
+        <Header />
+        <View style={styles.container}>
+        <Text style={styles.textStyle}>Startup Week Navigator</Text>
+          <EventDeck
+            data={this.state.events}
+            renderCard={this.renderCard}
+            renderNoMoreCards={this.renderNoMoreCards}
+          />
+        </View>
       </View>
     );
   }
@@ -83,7 +83,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#b8c9c8"
   },
-  main: {
-    flex: 1
+  textStyle: {
+    fontSize: 30,
+    textAlign: "center",
+    color: "#00505e",
+    fontWeight: "600"
   }
 });

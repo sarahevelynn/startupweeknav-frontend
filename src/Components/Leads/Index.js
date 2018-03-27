@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NavigatorIOS, Text, View, StyleSheet, Image } from "react-native";
+import { NavigatorIOS, View, StyleSheet, Image } from "react-native";
+import { Button, Text, Footer, FooterTab } from "native-base";
 import Header from "../HeaderFooter/Header";
-import Button from "../General/Button";
+import Icon from "react-native-vector-icons/FontAwesome";
 import FormIndex from "./CreateCard/Index";
 import CardListIndex from "./CardList/Index";
 import CameraScreenIndex from "./TakePicture/Index";
@@ -66,20 +67,51 @@ class MyScene extends React.Component {
     return (
       <View>
         <View style={styles.header} />
-        <Header style={styles.header} />
+        <Header />
         <View style={styles.container}>
-          <Text style={styles.title}>
-            Please select one of the following: {this.props.title}
-          </Text>
           <View style={styles.button}>
-            <Button onPress={this._takePicture}>Take a Picture</Button>
+            <Icon.Button
+              name="camera-retro"
+              iconRight
+              light
+              vertical
+              size={40}
+              backgroundColor="#287573"
+              onPress={this._takePicture}
+              style={styles.icon}
+            >
+              <Text style={styles.text}>Take Picture</Text>
+            </Icon.Button>
           </View>
           <View style={styles.button}>
-            <Button onPress={this._addCard}>Add a Card</Button>
+            <Icon.Button
+              name="user-plus"
+              iconLeft
+              light
+              vertical
+              size={40}
+              backgroundColor="#287573"
+              onPress={this._takePicture}
+              style={styles.icon}
+            >
+              <Text style={styles.text}>Add a Lead</Text>
+            </Icon.Button>
           </View>
           <View style={styles.button}>
-            <Button onPress={this._viewLeads}>View All Leads</Button>
+            <Icon.Button
+              name="address-book-o"
+              iconLeft
+              light
+              vertical
+              size={40}
+              backgroundColor="#287573"
+              onPress={this._viewLeads}
+              style={styles.icon}
+            >
+              <Text style={styles.text}>View Leads</Text>
+            </Icon.Button>
           </View>
+          <View style={{height:20}}/>
         </View>
         <Image source={require("./denver.png")} />
       </View>
@@ -92,21 +124,36 @@ const styles = StyleSheet.create({
     backgroundColor: "#b8c9c8",
     borderRadius: 4,
     borderWidth: 4,
-    borderColor: "#d6d7da",
-    marginTop: 5
+    borderColor: "#d6d7da"
   },
   header: {
-    height: 90
+    height: 85
   },
   title: {
     fontSize: 30,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontWeight: "800",
+    color:"#215e5b",
+    textAlign: "center",
+    borderWidth: 4,
+    borderRadius: 10,
+    borderColor: "#215e5b"
   },
   button: {
     paddingTop: 5,
     paddingBottom: 5,
-    marginTop: 10,
-    marginBottom: 10
+    margin: 10,
+    justifyContent: "center",
+    alignContent: "center"
+  },
+  icon: {
+    justifyContent: "center",
+    alignContent: "center"
+  },
+  text: {
+    fontFamily: "Arial",
+    fontSize: 27,
+    color: "white",
+    fontWeight: "bold",
+    paddingLeft: 15
   }
 });

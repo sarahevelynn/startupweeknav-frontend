@@ -18,7 +18,7 @@ export default class Form extends Component {
     this.state = {
       priority: 0,
       catagory: "",
-      note: "",
+      note: "Sounds like a great sustainability lead!",
       image: null,
       cards: []
     };

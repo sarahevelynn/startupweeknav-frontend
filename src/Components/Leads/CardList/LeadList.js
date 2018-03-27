@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 5,
     paddingRight: 15,
-    color: "#0b3331",
+    color: "#105b57",
     fontWeight: "bold"
   },
   cardImageStyle: {
@@ -114,7 +114,8 @@ const styles = StyleSheet.create({
     width: 100,
     margin: 10,
     marginLeft: 0,
-    borderWidth: 7,
+    borderWidth: 5,
+    borderRadius: 4,
     borderColor: "#105b57"
   },
   cardInfoStyle: {
@@ -122,18 +123,19 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     paddingBottom: 10,
     fontSize: 17,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "#105b57"
   },
   descriptionButton: {
     backgroundColor: "#cae8e6",
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "#063835",
+    borderWidth: 2,
+    borderColor: "#507573",
     width: 150
   },
   descriptionContainer: {
     flexDirection: "row",
-    backgroundColor: "#979b9b",
+    backgroundColor: "#6d7070",
     borderRadius: 4,
     borderWidth: 4,
     borderColor: "#d6d7da",
@@ -144,15 +146,16 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     fontSize: 19,
-    fontWeight: "500",
-    padding: 5
+    fontWeight: "600",
+    padding: 5,
+    color: "white"
   },
   textStyle: {
     alignSelf: "center",
     color: "#063835",
-    fontSize: 15,
-    fontWeight: "700",
-    paddingTop: 10,
-    paddingBottom: 10
+    fontSize: 17,
+    fontWeight: "800",
+    paddingTop: 5,
+    paddingBottom: 5
   }
 });
