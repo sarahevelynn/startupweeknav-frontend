@@ -111,7 +111,7 @@ export default class Agenda extends React.Component {
               onPress={() => this._onPress(event)}
               style={styles.buttonStyle}
             >
-              <Text style={styles.textGreenStyle}>Tap to See Note</Text>
+              <Text style={styles.textGreenStyle}>Tap to See Description</Text>
             </TouchableOpacity>
             </View>
           </View>
@@ -137,7 +137,8 @@ const styles = {
     borderRadius: 4,
     borderWidth: 4,
     borderColor: "#d6d7da",
-  },  containerStyle: {
+  },
+  containerStyle: {
       backgroundColor: "#dce2e2",
       flexDirection: "row",
       flex: 1,
