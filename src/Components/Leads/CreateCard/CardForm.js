@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TextInput, Picker, Text, Image, StyleSheet } from "react-native";
+import { View, TextInput, TouchableWithoutFeedback, Keyboard, Text, Image, StyleSheet } from "react-native";
 import { ButtonGroup } from "react-native-elements";
 import axios from "axios";
 import { ImagePicker } from "expo";
@@ -8,12 +8,11 @@ import Button from "../../General/Button";
 class NoteText extends Component {
   render() {
     return (
-      <TextInput
-        {...this.props}
-        editable={true}
-        maxLength={400}
-        returnKeyType="done"
-      />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <View >
+              <TextInput style={styles.noteTextStyle} returnKeyType="done"/>
+          </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
