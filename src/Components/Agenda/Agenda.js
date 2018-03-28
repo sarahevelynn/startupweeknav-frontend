@@ -3,11 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
-  Modal,
   TouchableHighlight,
   ScrollView,
   Image,
-  Linking
+  Linking,
+  TouchableOpacity
 } from "react-native";
 import { Card } from "react-native-elements";
 import axios from "axios";
@@ -21,7 +21,8 @@ export default class Agenda extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      agenda: []
+      agenda: [],
+      toggle: false
     };
   }
 
@@ -69,6 +70,22 @@ export default class Agenda extends React.Component {
     );
   }
 
+  renderDescription = event => {
+    if (this.state.toggle) {
+      return (
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.cardDescriptionStyle}>{event.eventDescription}</Text>
+        </View>
+      );
+    } else {
+      return null;
+    }
+  };
+
+  _onPress() {
+    this.setState({ toggle: !this.state.toggle });
+  }
+
   renderAgenda(event) {
     return this.state.agenda.map(event => (
       <View key={event.id}>
@@ -87,9 +104,16 @@ export default class Agenda extends React.Component {
 
             <Text>{event.date}</Text>
             <Text>{event.time}</Text>
+            <TouchableOpacity
+              onPress={() => this._onPress(event)}
+              style={styles.descriptionButton}
+            >
+              <Text style={styles.textStyle}>Tap to See Note</Text>
+            </TouchableOpacity>
             <View>{this.renderSwipe(event.id)}</View>
           </View>
         </View>
+        <View>{this.renderDescription(event)}</View>
       </View>
     ));
   }
@@ -147,5 +171,36 @@ const styles = {
     borderRadius: 4,
     borderWidth: 2,
     borderColor: "#d6d7da"
+  },
+
+  descriptionButton: {
+    backgroundColor: "#cae8e6",
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: "#507573",
+    width: 150
+  },
+  descriptionContainer: {
+    flexDirection: "row",
+    backgroundColor: "#6d7070",
+    borderRadius: 4,
+    borderWidth: 4,
+    borderColor: "#d6d7da",
+    borderTopWidth: 0
+  },
+  cardDescriptionStyle: {
+    textAlign: "center",
+    fontSize: 19,
+    fontWeight: "600",
+    padding: 5,
+    color: "white"
+  },
+  textStyle: {
+    alignSelf: "center",
+    color: "#063835",
+    fontSize: 17,
+    fontWeight: "800",
+    paddingTop: 5,
+    paddingBottom: 5
   }
 };

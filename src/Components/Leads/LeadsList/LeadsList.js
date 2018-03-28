@@ -9,7 +9,6 @@ import {
   TouchableOpacity
 } from "react-native";
 import axios from "axios";
-import Swipeout from "react-native-swipeout";
 import Card from "./Card";
 import CardSection from "./CardSection";
 import Header from "../../HeaderFooter/Header";
