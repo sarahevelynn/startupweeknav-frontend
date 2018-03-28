@@ -5,6 +5,7 @@ import Expo from "expo";
 import Header from "../HeaderFooter/Header";
 import { Card } from "react-native-elements";
 import Button from "../General/Button";
+import GenerateButton from "../General/GenerateButton";
 import CardSection from "./CardSection";
 import CardContain from "./CardContain";
 import EventDeck from "./EventDeck";
@@ -48,16 +49,25 @@ export default class SwipeIndex extends React.Component {
 
   renderNoMoreCards() {
     return (
-      <CardContain>
-        <Card>
-          <CardSection>
-            <View>
-              <Text>No more events to go through!</Text>
-              <Button>"Get more!"</Button>
-            </View>
-          </CardSection>
-        </Card>
-      </CardContain>
+      <View>
+        <CardContain>
+          <Card
+            key={"noMore"}
+            title="No more events to go through!"
+            image={require("./startups.jpg")}
+          >
+            <CardSection>
+              <Text>To go back through events you have previously swiped left on, click the button below. If not, check out your agenda or add some leads. </Text>
+            </CardSection>
+
+            <CardSection>
+              <GenerateButton>
+                Generate More
+              </GenerateButton>
+            </CardSection>
+          </Card>
+        </CardContain>
+      </View>
     );
   }
 

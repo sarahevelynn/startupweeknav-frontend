@@ -45,7 +45,7 @@ const EventCard = ({ event }) => {
             <Text>{eventDescription}</Text>
           </CardSection>
 
-          <CardSection>
+          <CardSection style={styles.buttons}>
             <Button >
               {event.register}
             </Button>
@@ -79,7 +79,9 @@ const styles = {
   },
   buttons: {
     flex: 1,
-    justifyContent: "space-around"
+    justifyContent: "space-between",
+    flexDirection: "row",
+    flexWrap: "nowrap",
   }
 };
 

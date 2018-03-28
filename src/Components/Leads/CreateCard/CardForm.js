@@ -91,6 +91,9 @@ export default class Form extends Component {
             selectedIndex={this.state.priorityIndex}
             buttons={priorityButtons}
             containerStyle={{ height: 40 }}
+            selectedButtonStyle={styles.selectedButtonStyle}
+            selectedTextStyle={{ color: "white" }}
+            textStyle={{ textAlign: "center", fontWeight: "bold" }}
           />
         </View>
 
@@ -106,7 +109,9 @@ export default class Form extends Component {
             selectedIndex={this.state.categoryIndex}
             buttons={categoryButtons}
             containerStyle={{ height: 50 }}
-            textStyle={{ textAlign: "center" }}
+            selectedButtonStyle={styles.selectedButtonStyle}
+            selectedTextStyle={{ color: "white" }}
+            textStyle={{ textAlign: "center", fontWeight: "bold" }}
           />
         </View>
 
@@ -186,5 +191,8 @@ const styles = StyleSheet.create({
     borderColor: "#696b6b",
     fontSize: 15,
     backgroundColor: "white"
+  },
+  selectedButtonStyle: {
+    backgroundColor: "#0e4441"
   }
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 
-const Button = ({ onPress, children }) => {
+const GenerateButton = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
@@ -16,11 +16,13 @@ const styles = {
   textStyle: {
     alignSelf: "center",
     color: "#063835",
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: "700",
     padding: 10,
   },
   buttonStyle: {
+    flex:1,
+    alignSelf: "stretch",
     backgroundColor: "#fff",
     borderRadius: 5,
     borderWidth: 1,
@@ -30,4 +32,4 @@ const styles = {
   }
 }
 
-export default Button;
+export default GenerateButton;

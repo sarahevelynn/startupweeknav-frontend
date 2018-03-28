@@ -15,14 +15,12 @@ const Header = props => {
 
 const styles = {
   imageStyle: {
-    flex: 1,
     paddingTop: 140,
     shadowColor: "#000",
     width: '100%',
     height: 70,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.4,
-    position: "relative"
   }
 };
 
