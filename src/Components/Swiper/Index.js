@@ -49,7 +49,6 @@ export default class SwipeIndex extends React.Component {
 
   renderNoMoreCards() {
     return (
-      <View>
         <CardContain>
           <Card
             key={"noMore"}
@@ -67,7 +66,6 @@ export default class SwipeIndex extends React.Component {
             </CardSection>
           </Card>
         </CardContain>
-      </View>
     );
   }
 

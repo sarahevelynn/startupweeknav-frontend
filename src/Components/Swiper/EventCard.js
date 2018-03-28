@@ -44,7 +44,7 @@ const EventCard = ({ event }) => {
             <Text>{eventDescription}</Text>
           </CardSection>
 
-          <CardSection style={styles.buttons}>
+          <CardSection >
             <Button >
               {event.register}
             </Button>
@@ -74,12 +74,6 @@ const styles = {
   cardTicketStyle: {
     flexDirection: "row",
     justifyContent: "space-around"
-  },
-  buttons: {
-    flex: 1,
-    justifyContent: "space-between",
-    flexDirection: "row",
-    flexWrap: "nowrap",
   }
 };
 

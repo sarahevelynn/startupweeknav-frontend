@@ -126,7 +126,7 @@ export default class Form extends Component {
         </View>
 
         <View>
-          <Text style={styles.textStyle}> Attach their card picture </Text>
+          <Text style={styles.textStyle}> Attach Business Card </Text>
           <Button onPress={this._pickImage}>
             Pick an image from camera roll
             {image && (
@@ -141,6 +141,14 @@ export default class Form extends Component {
             )}
           </Button>
         </View>
+        <View
+          style={{
+            padding:4,
+            borderBottomColor: "#0e4441",
+            borderBottomWidth: 2,
+            borderRadius: 5
+          }}
+        />
 
         <View style={{ height: 10 }} />
         <View>

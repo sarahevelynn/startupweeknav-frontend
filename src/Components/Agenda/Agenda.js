@@ -191,19 +191,23 @@ const styles = {
     color: "white"
   },
   textGreenStyle: {
-    alignSelf: "center",
     color: "#287573",
     fontSize: 17,
     fontWeight: "800",
     paddingTop: 5,
-    paddingBottom: 5
+    paddingBottom: 5,
+    textAlign: "right",
+    paddingRight:3
+
   },
   textRedStyle: {
     color: "#842525",
-    alignSelf: "center",
     fontSize: 17,
     fontWeight: "800",
     paddingTop: 5,
-    paddingBottom: 5
+    paddingBottom: 5,
+    textAlign: "right",
+    paddingRight:3
+
   }
 };
