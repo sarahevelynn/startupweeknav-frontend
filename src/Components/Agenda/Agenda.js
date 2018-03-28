@@ -9,11 +9,12 @@ import {
   Linking,
   TouchableOpacity
 } from "react-native";
-import { Card } from "react-native-elements";
+import Swipeout from "react-native-swipeout";
 import axios from "axios";
 import Expo, { Constants } from "expo";
 import Button from "../General/Button";
-import Swipeout from "react-native-swipeout";
+import Card from "../General/Card";
+import CardSection from "../General/CardSection";
 
 var baseURL = "https://startupweeknavigator.herokuapp.com/agenda/";
 
@@ -62,10 +63,9 @@ export default class Agenda extends React.Component {
         right={swipeBtns}
         autoClose={true}
         buttonWidth={60}
-        backgroundColor="transparent"
-        style={styles.deleteSwipe}
+        style={styles.buttonStyle}
       >
-        <Text style={styles.swipeButtonStyle}> Swipe to Delete Event </Text>
+        <Text style={styles.textRedStyle}> Swipe to Delete Event </Text>
       </Swipeout>
     );
   }
@@ -88,8 +88,9 @@ export default class Agenda extends React.Component {
 
   renderAgenda(event) {
     return this.state.agenda.map(event => (
-      <View key={event.id}>
-        <View style={styles.eventStyle}>
+      <Card key={event.id} style={styles.containerStyle}>
+        <CardSection>
+        <View style={styles.containerStyle}>
           <View style={styles.cardImageContainerStyle}>
             <Image
               style={styles.cardImageStyle}
@@ -104,23 +105,26 @@ export default class Agenda extends React.Component {
 
             <Text>{event.date}</Text>
             <Text>{event.time}</Text>
+            <View >
+            <View>{this.renderSwipe(event.id)}</View>
             <TouchableOpacity
               onPress={() => this._onPress(event)}
-              style={styles.descriptionButton}
+              style={styles.buttonStyle}
             >
-              <Text style={styles.textStyle}>Tap to See Note</Text>
+              <Text style={styles.textGreenStyle}>Tap to See Note</Text>
             </TouchableOpacity>
-            <View>{this.renderSwipe(event.id)}</View>
+            </View>
           </View>
-        </View>
+          </View>
+        </CardSection>
         <View>{this.renderDescription(event)}</View>
-      </View>
+      </Card>
     ));
   }
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
         {this.renderAgenda()}
       </ScrollView>
     );
@@ -128,15 +132,18 @@ export default class Agenda extends React.Component {
 }
 
 const styles = {
-  eventStyle: {
-    flexDirection: "row",
-    paddingTop: 10,
-    paddingBottom: 10,
+  container: {
+    backgroundColor: "#b8c9c8",
     borderRadius: 4,
-    borderTopWidth: 4,
+    borderWidth: 4,
     borderColor: "#d6d7da",
-    marginTop: 1
-  },
+  },  containerStyle: {
+      backgroundColor: "#dce2e2",
+      flexDirection: "row",
+      flex: 1,
+      flexWrap: "nowrap",
+      alignItems: "center"
+    },
   cardImageStyle: {
     height: 100,
     width: 130
@@ -160,29 +167,17 @@ const styles = {
     fontSize: 20,
     fontWeight: "600"
   },
-  deleteSwipe: {
+  buttonStyle: {
     borderRadius: 4,
-    borderWidth: 2,
+    borderWidth: 3,
     borderColor: "#d6d7da",
-    alignContent: "stretch",
-  },
-  swipeButtonStyle: {
-    fontSize: 20,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: "#d6d7da"
-  },
-
-  descriptionButton: {
-    backgroundColor: "#cae8e6",
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: "#507573",
-    width: 150
+    marginBottom: 5,
+    marginLeft: 35,
+    backgroundColor: "#FFFFFF"
   },
   descriptionContainer: {
     flexDirection: "row",
-    backgroundColor: "#6d7070",
+    backgroundColor: "#287573",
     borderRadius: 4,
     borderWidth: 4,
     borderColor: "#d6d7da",
@@ -195,9 +190,17 @@ const styles = {
     padding: 5,
     color: "white"
   },
-  textStyle: {
+  textGreenStyle: {
     alignSelf: "center",
-    color: "#063835",
+    color: "#287573",
+    fontSize: 17,
+    fontWeight: "800",
+    paddingTop: 5,
+    paddingBottom: 5
+  },
+  textRedStyle: {
+    color: "#842525",
+    alignSelf: "center",
     fontSize: 17,
     fontWeight: "800",
     paddingTop: 5,

@@ -2,8 +2,8 @@ import React from "react";
 import { Text, View, Image, Linking, ScrollView } from "react-native";
 import { Card } from "react-native-elements";
 import Button from "../General/Button";
-import CardSection from "./CardSection";
-import CardContain from "./CardContain";
+import CardSection from "../General/CardSection";
+import CardContain from "../General/CardContain";
 
 const EventCard = ({ event }) => {
 
@@ -18,13 +18,12 @@ const EventCard = ({ event }) => {
     tickets
   } = event;
   const {
-    container,
     cardContentStyle,
     cardInfoStyle,
-    cardTicketStyle
+    cardTicketStyle,
   } = styles;
   return (
-    <View>
+    <View >
       <CardContain>
         <Card
           key={event.id}
@@ -63,7 +62,6 @@ const EventCard = ({ event }) => {
 };
 
 const styles = {
-  container: {},
   cardContentStyle: {
     flexDirection: "column",
     flexWrap: "nowrap",

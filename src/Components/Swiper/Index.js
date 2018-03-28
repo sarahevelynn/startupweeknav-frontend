@@ -6,8 +6,8 @@ import Header from "../HeaderFooter/Header";
 import { Card } from "react-native-elements";
 import Button from "../General/Button";
 import GenerateButton from "../General/GenerateButton";
-import CardSection from "./CardSection";
-import CardContain from "./CardContain";
+import CardSection from "../General/CardContain";
+import CardContain from "../General/CardContain";
 import EventDeck from "./EventDeck";
 import EventCard from "./EventCard";
 

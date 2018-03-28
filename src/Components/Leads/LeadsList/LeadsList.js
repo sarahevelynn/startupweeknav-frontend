@@ -9,8 +9,8 @@ import {
   TouchableOpacity
 } from "react-native";
 import axios from "axios";
-import Card from "./Card";
-import CardSection from "./CardSection";
+import Card from "../../General/Card";
+import CardSection from "../../General/CardSection";
 import Header from "../../HeaderFooter/Header";
 
 var baseURL = "https://startupweeknavigator.herokuapp.com/startupcards/";
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
   descriptionContainer: {
     flexDirection: "row",
-    backgroundColor: "#6d7070",
+    backgroundColor: "#287573",
     borderRadius: 4,
     borderWidth: 4,
     borderColor: "#d6d7da",
