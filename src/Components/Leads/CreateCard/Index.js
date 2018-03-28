@@ -17,7 +17,7 @@ class FormIndex extends Component {
 
 const styles = StyleSheet.create({
   header: {
-    height: 90
+    height: 65
   }
 });
 

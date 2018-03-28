@@ -12,10 +12,11 @@ import axios from "axios";
 import Swipeout from "react-native-swipeout";
 import Card from "./Card";
 import CardSection from "./CardSection";
+import Header from "../../HeaderFooter/Header";
 
 var baseURL = "https://startupweeknavigator.herokuapp.com/startupcards/";
 
-export default class CardsList extends React.Component {
+export default class LeadsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -139,11 +140,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 4,
     borderColor: "#d6d7da",
-    borderTopWidth: 0,
+    borderTopWidth: 0
   },
   cardDescriptionStyle: {
-    flexWrap: "wrap",
-    flex: 1,
     textAlign: "center",
     fontSize: 19,
     fontWeight: "600",

@@ -5,7 +5,7 @@ import { Button, Text, Footer, FooterTab } from "native-base";
 import Header from "../HeaderFooter/Header";
 import Icon from "react-native-vector-icons/FontAwesome";
 import FormIndex from "./CreateCard/Index";
-import CardListIndex from "./CardList/Index";
+import LeadsIndex from "./LeadsList/Index";
 import CameraScreenIndex from "./TakePicture/Index";
 
 export default class LeadsInex extends React.Component {
@@ -57,7 +57,7 @@ class MyScene extends React.Component {
   _viewLeads() {
     let nextIndex = ++this.props.index;
     this.props.navigator.push({
-      component: CardListIndex,
+      component: LeadsIndex,
       title: "View Your Leads",
       passProps: { index: nextIndex }
     });
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     borderColor: "#d6d7da"
   },
   header: {
-    height: 85
+    height: 65
   },
   title: {
     fontSize: 30,

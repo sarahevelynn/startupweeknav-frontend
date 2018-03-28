@@ -1,14 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Header from "../../HeaderFooter/Header";
-import LeadList from "./LeadList";
+import LeadList from "./LeadsList";
 
-export default class AgendaIndex extends React.Component {
+export default class LeadsList extends React.Component {
   render() {
     return (
       <View>
-      <View style={styles.header} />
-      <Header />
         <LeadList />
       </View>
     );
