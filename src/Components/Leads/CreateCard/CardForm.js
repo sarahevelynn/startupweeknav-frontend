@@ -36,20 +36,13 @@ export default class Form extends Component {
     super(props);
     this.state = {
       priority: 0,
+      priorityIndex: -1,
       category: "",
-      note: "Sounds like a great sustainability lead!",
+      categoryIndex: -1,
+      note: "",
       image: null,
       cards: []
     };
-    this.updatePriority = this.updatePriority.bind(this);
-    this.updateCategory = this.updateCategory.bind(this);
-  }
-
-  updatePriority(itemValue) {
-    this.setState({ priority: itemValue });
-  }
-  updateCategory(itemValue) {
-    this.setState({ category: itemValue });
   }
 
   getData = () => {
@@ -83,17 +76,20 @@ export default class Form extends Component {
       "General contact",
       "Other"
     ];
-    const { selectedPriority } = this.state.priority;
-    const { selectedCategory } = this.state.category;
 
     return (
       <View style={styles.container}>
         <View>
           <Text style={styles.textStyle}> Assign Priority to Contact </Text>
           <ButtonGroup
-            onPress={this.updatePriority}
+            onPress={itemIndex =>
+              this.setState({
+                priority: priorityButtons[itemIndex],
+                priorityIndex: itemIndex
+              })
+            }
+            selectedIndex={this.state.priorityIndex}
             buttons={priorityButtons}
-            selectedPriority={selectedPriority}
             containerStyle={{ height: 40 }}
           />
         </View>
@@ -101,9 +97,13 @@ export default class Form extends Component {
         <View>
           <Text style={styles.textStyle}> Assign Category to Contact </Text>
           <ButtonGroup
-            onPress={(itemValue, itemIndex) =>
-              this.setState({ category: itemValue })
+            onPress={itemIndex =>
+              this.setState({
+                category: categoryButtons[itemIndex],
+                categoryIndex: itemIndex
+              })
             }
+            selectedIndex={this.state.categoryIndex}
             buttons={categoryButtons}
             containerStyle={{ height: 50 }}
             textStyle={{ textAlign: "center" }}
