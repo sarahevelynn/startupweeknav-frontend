@@ -1,6 +1,13 @@
-import React from 'react';
-import { Image, StyleSheet, View, TouchableOpacity, Text, ScrollView } from 'react-native';
-import { FileSystem, FaceDetector } from 'expo';
+import React from "react";
+import {
+  Image,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+  ScrollView
+} from "react-native";
+import { FileSystem, FaceDetector } from "expo";
 
 const pictureSize = 150;
 
@@ -8,22 +15,24 @@ export default class GalleryScreen extends React.Component {
   state = {
     faces: {},
     images: {},
-    photos: [],
+    photos: []
   };
   _mounted = false;
 
   componentDidMount() {
     this._mounted = true;
-    FileSystem.readDirectoryAsync(FileSystem.documentDirectory + 'photos').then(photos => {
-      if (this._mounted) {
-        this.setState(
-          {
-            photos,
-          },
-          this.detectFaces
-        );
+    FileSystem.readDirectoryAsync(FileSystem.documentDirectory + "photos").then(
+      photos => {
+        if (this._mounted) {
+          this.setState(
+            {
+              photos
+            },
+            this.detectFaces
+          );
+        }
       }
-    });
+    );
   }
 
   componentWillUnmount() {
@@ -41,7 +50,7 @@ export default class GalleryScreen extends React.Component {
         scaleY: scaledHeight / height,
 
         offsetX: 0,
-        offsetY: (pictureSize - scaledHeight) / 2,
+        offsetY: (pictureSize - scaledHeight) / 2
       };
     } else {
       const scaledWidth = pictureSize * width / height;
@@ -53,7 +62,7 @@ export default class GalleryScreen extends React.Component {
         scaleY: pictureSize / height,
 
         offsetX: (pictureSize - scaledWidth) / 2,
-        offsetY: 0,
+        offsetY: 0
       };
     }
   };
@@ -61,10 +70,13 @@ export default class GalleryScreen extends React.Component {
   detectFaces = () => this.state.photos.forEach(this.detectFace);
 
   detectFace = photoUri =>
-    FaceDetector.detectFacesAsync(`${FileSystem.documentDirectory}photos/${photoUri}`, {
-      detectLandmarks: FaceDetector.Constants.Landmarks.none,
-      runClassifications: FaceDetector.Constants.Classifications.all,
-    })
+    FaceDetector.detectFacesAsync(
+      `${FileSystem.documentDirectory}photos/${photoUri}`,
+      {
+        detectLandmarks: FaceDetector.Constants.Landmarks.none,
+        runClassifications: FaceDetector.Constants.Classifications.all
+      }
+    )
       .then(this.facesDetected)
       .catch(this.handleFaceDetectionError);
 
@@ -72,16 +84,18 @@ export default class GalleryScreen extends React.Component {
     if (!this._mounted) return;
     this.setState({
       faces: { ...this.state.faces, [image.uri]: faces },
-      images: { ...this.state.images, [image.uri]: image },
+      images: { ...this.state.images, [image.uri]: image }
     });
-  }
+  };
 
   handleFaceDetectionError = error => console.warn(error);
 
   renderFaces = photoUri =>
     this.state.images[photoUri] &&
     this.state.faces[photoUri] &&
-    this.state.faces[photoUri].map(this.renderFace(this.state.images[photoUri]));
+    this.state.faces[photoUri].map(
+      this.renderFace(this.state.images[photoUri])
+    );
 
   renderFace = image => (face, index) => {
     const { scaleX, scaleY, offsetX, offsetY } = this.getImageDimensions(image);
@@ -89,7 +103,7 @@ export default class GalleryScreen extends React.Component {
       top: offsetY + face.bounds.origin.y * scaleY,
       left: offsetX + face.bounds.origin.x * scaleX,
       width: face.bounds.size.width * scaleX,
-      height: face.bounds.size.height * scaleY,
+      height: face.bounds.size.height * scaleY
     };
 
     return (
@@ -99,9 +113,12 @@ export default class GalleryScreen extends React.Component {
         transform={[
           { perspective: 600 },
           { rotateZ: `${(face.rollAngle || 0).toFixed(0)}deg` },
-          { rotateY: `${(face.yawAngle || 0).toFixed(0)}deg` },
-        ]}>
-        <Text style={styles.faceText}>😁 {(face.smilingProbability * 100).toFixed(0)}%</Text>
+          { rotateY: `${(face.yawAngle || 0).toFixed(0)}deg` }
+        ]}
+      >
+        <Text style={styles.faceText}>
+          😁 {(face.smilingProbability * 100).toFixed(0)}%
+        </Text>
       </View>
     );
   };
@@ -109,7 +126,10 @@ export default class GalleryScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.backButton} onPress={this.props.onPress}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={this.props.onPress}
+        >
           <Text>Back</Text>
         </TouchableOpacity>
         <ScrollView contentComponentStyle={{ flex: 1 }}>
@@ -120,11 +140,13 @@ export default class GalleryScreen extends React.Component {
                   key={photoUri}
                   style={styles.picture}
                   source={{
-                    uri: `${FileSystem.documentDirectory}photos/${photoUri}`,
+                    uri: `${FileSystem.documentDirectory}photos/${photoUri}`
                   }}
                 />
                 <View style={styles.facesContainer}>
-                  {this.renderFaces(`${FileSystem.documentDirectory}photos/${photoUri}`)}
+                  {this.renderFaces(
+                    `${FileSystem.documentDirectory}photos/${photoUri}`
+                  )}
                 </View>
               </View>
             ))}
@@ -138,52 +160,52 @@ export default class GalleryScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 20
   },
   pictures: {
     flex: 1,
-    flexWrap: 'wrap',
-    flexDirection: 'row',
+    flexWrap: "wrap",
+    flexDirection: "row"
   },
   picture: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     right: 0,
     left: 0,
     top: 0,
-    resizeMode: 'contain',
+    resizeMode: "contain"
   },
   pictureWrapper: {
     width: pictureSize,
     height: pictureSize,
-    margin: 5,
+    margin: 5
   },
   facesContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     right: 0,
     left: 0,
-    top: 0,
+    top: 0
   },
   face: {
     borderWidth: 2,
     borderRadius: 2,
-    position: 'absolute',
-    borderColor: '#FFD700',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    position: "absolute",
+    borderColor: "#FFD700",
+    justifyContent: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)"
   },
   faceText: {
-    color: '#FFD700',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    color: "#FFD700",
+    fontWeight: "bold",
+    textAlign: "center",
     margin: 2,
     fontSize: 10,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent"
   },
   backButton: {
     padding: 20,
     marginBottom: 4,
-    backgroundColor: 'indianred',
-  },
+    backgroundColor: "indianred"
+  }
 });

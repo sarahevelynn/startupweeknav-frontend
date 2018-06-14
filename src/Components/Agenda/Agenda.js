@@ -74,7 +74,9 @@ export default class Agenda extends React.Component {
     if (this.state.toggle) {
       return (
         <View style={styles.descriptionContainer}>
-          <Text style={styles.cardDescriptionStyle}>{event.eventDescription}</Text>
+          <Text style={styles.cardDescriptionStyle}>
+            {event.eventDescription}
+          </Text>
         </View>
       );
     } else {
@@ -90,31 +92,33 @@ export default class Agenda extends React.Component {
     return this.state.agenda.map(event => (
       <Card key={event.id} style={styles.containerStyle}>
         <CardSection>
-        <View style={styles.containerStyle}>
-          <View style={styles.cardImageContainerStyle}>
-            <Image
-              style={styles.cardImageStyle}
-              source={{ uri: event.image }}
-            />
-          </View>
-
-          <View style={styles.cardContentStyle}>
-            <View style={[styles.cardContentStyle, { flexDirection: "row" }]}>
-              <Text style={styles.cardTitleStyle}>{event.eventName}</Text>
+          <View style={styles.containerStyle}>
+            <View style={styles.cardImageContainerStyle}>
+              <Image
+                style={styles.cardImageStyle}
+                source={{ uri: event.image }}
+              />
             </View>
 
-            <Text>{event.date}</Text>
-            <Text>{event.time}</Text>
-            <View >
-            <View>{this.renderSwipe(event.id)}</View>
-            <TouchableOpacity
-              onPress={() => this._onPress(event)}
-              style={styles.buttonStyle}
-            >
-              <Text style={styles.textGreenStyle}>Tap to See Description</Text>
-            </TouchableOpacity>
+            <View style={styles.cardContentStyle}>
+              <View style={[styles.cardContentStyle, { flexDirection: "row" }]}>
+                <Text style={styles.cardTitleStyle}>{event.eventName}</Text>
+              </View>
+
+              <Text>{event.date}</Text>
+              <Text>{event.time}</Text>
+              <View>
+                <View>{this.renderSwipe(event.id)}</View>
+                <TouchableOpacity
+                  onPress={() => this._onPress(event)}
+                  style={styles.buttonStyle}
+                >
+                  <Text style={styles.textGreenStyle}>
+                    Tap to See Description
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
           </View>
         </CardSection>
         <View>{this.renderDescription(event)}</View>
@@ -124,9 +128,7 @@ export default class Agenda extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {this.renderAgenda()}
-      </ScrollView>
+      <ScrollView style={styles.container}>{this.renderAgenda()}</ScrollView>
     );
   }
 }
@@ -136,15 +138,15 @@ const styles = {
     backgroundColor: "#b8c9c8",
     borderRadius: 4,
     borderWidth: 4,
-    borderColor: "#d6d7da",
+    borderColor: "#d6d7da"
   },
   containerStyle: {
-      backgroundColor: "#dce2e2",
-      flexDirection: "row",
-      flex: 1,
-      flexWrap: "nowrap",
-      alignItems: "center"
-    },
+    backgroundColor: "#dce2e2",
+    flexDirection: "row",
+    flex: 1,
+    flexWrap: "nowrap",
+    alignItems: "center"
+  },
   cardImageStyle: {
     height: 100,
     width: 130
@@ -198,8 +200,7 @@ const styles = {
     paddingTop: 5,
     paddingBottom: 5,
     textAlign: "right",
-    paddingRight:3
-
+    paddingRight: 3
   },
   textRedStyle: {
     color: "#842525",
@@ -208,7 +209,6 @@ const styles = {
     paddingTop: 5,
     paddingBottom: 5,
     textAlign: "right",
-    paddingRight:3
-
+    paddingRight: 3
   }
 };

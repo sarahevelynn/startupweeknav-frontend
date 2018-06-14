@@ -8,14 +8,14 @@ const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 250;
 
 var agendaURL = "https://startupweeknavigator.herokuapp.com/agenda";
-var secondSwipeURL = "https://startupweeknavigator.herokuapp.com/secondswipeevents";
+var secondSwipeURL =
+  "https://startupweeknavigator.herokuapp.com/secondswipeevents";
 
 class EventDeck extends Component {
   static defaultProps = {
-    onSwipeRight: () => {}
-,
+    onSwipeRight: () => {},
     onSwipeLeft: () => {}
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -49,7 +49,7 @@ class EventDeck extends Component {
     }
   }
 
-  addEventToAgenda = (item) => {
+  addEventToAgenda = item => {
     axios
       .post(agendaURL, {
         eventName: item.eventName,
@@ -64,10 +64,10 @@ class EventDeck extends Component {
       .then(function(response) {
         console.log(response);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   };
 
-  addToSecondSwipeURL = (item) => {
+  addToSecondSwipeURL = item => {
     axios
       .post(secondSwipeURL, {
         eventName: item.eventName,
@@ -82,7 +82,7 @@ class EventDeck extends Component {
       .then(function(response) {
         console.log(response);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   };
 
   forceSwipe(direction) {
@@ -102,7 +102,9 @@ class EventDeck extends Component {
     this.state.position.setValue({ x: 0, y: 0 });
     this.setState({ index: this.state.index + 1 });
 
-    direction === "right" ? this.addEventToAgenda(item) : this.addToSecondSwipeURL(item);
+    direction === "right"
+      ? this.addEventToAgenda(item)
+      : this.addToSecondSwipeURL(item);
     console.log(this.state);
   }
 
@@ -130,36 +132,35 @@ class EventDeck extends Component {
       return this.props.renderNoMoreCards();
     }
 
+    return this.props.data
+      .map((event, current) => {
+        if (current < this.state.index) {
+          return null;
+        }
 
-    return this.props.data.map((event, current) => {
-      if (current < this.state.index) {return null; }
+        if (current === this.state.index) {
+          return (
+            <Animated.View
+              key={event.id}
+              style={[this.getCardStyle(), styles.cardStyle]}
+              {...this.state.panResponder.panHandlers}
+            >
+              {this.props.renderCard(event)}
+            </Animated.View>
+          );
+        }
 
-      if (current === this.state.index) {
         return (
-          <Animated.View
-            key={event.id}
-            style={[this.getCardStyle(), styles.cardStyle]}
-            {...this.state.panResponder.panHandlers}
-          >
+          <Animated.View key={event.id} style={styles.cardStyle}>
             {this.props.renderCard(event)}
           </Animated.View>
         );
-      }
-
-      return (
-        <Animated.View key={event.id} style={styles.cardStyle}>
-        {this.props.renderCard(event)}
-        </Animated.View>
-      );
-    }).reverse();
+      })
+      .reverse();
   }
 
   render() {
-    return (
-      <View>
-      {this.renderCards()}
-      </View>
-      );
+    return <View>{this.renderCards()}</View>;
   }
 }
 
@@ -168,6 +169,6 @@ const styles = {
     position: "absolute",
     width: SCREEN_WIDTH
   }
-}
+};
 
 export default EventDeck;

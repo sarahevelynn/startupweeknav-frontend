@@ -5,12 +5,10 @@ const GenerateButton = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
-    <Text style={textStyle}>
-    {children}
-    </Text>
+      <Text style={textStyle}>{children}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = {
   textStyle: {
@@ -18,10 +16,10 @@ const styles = {
     color: "#063835",
     fontSize: 18,
     fontWeight: "700",
-    padding: 10,
+    padding: 10
   },
   buttonStyle: {
-    flex:1,
+    flex: 1,
     backgroundColor: "#fff",
     borderRadius: 5,
     borderWidth: 1,
@@ -30,6 +28,6 @@ const styles = {
     marginRight: 5,
     height: 20
   }
-}
+};
 
 export default GenerateButton;

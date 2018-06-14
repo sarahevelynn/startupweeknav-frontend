@@ -7,12 +7,11 @@ export default class AgendaIndex extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-      <Header />
+        <Header />
         <Agenda />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-});
+const styles = StyleSheet.create({});

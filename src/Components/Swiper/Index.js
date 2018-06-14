@@ -49,23 +49,25 @@ export default class SwipeIndex extends React.Component {
 
   renderNoMoreCards() {
     return (
-        <CardContain>
-          <Card
-            key={"noMore"}
-            title="No more events to go through!"
-            image={require("./startups.jpg")}
-          >
-            <CardSection>
-              <Text>To go back through events you have previously swiped left on, click the button below. If not, check out your agenda or add some leads. </Text>
-            </CardSection>
+      <CardContain>
+        <Card
+          key={"noMore"}
+          title="No more events to go through!"
+          image={require("./startups.jpg")}
+        >
+          <CardSection>
+            <Text>
+              To go back through events you have previously swiped left on,
+              click the button below. If not, check out your agenda or add some
+              leads.{" "}
+            </Text>
+          </CardSection>
 
-            <CardSection>
-              <GenerateButton>
-                Generate More
-              </GenerateButton>
-            </CardSection>
-          </Card>
-        </CardContain>
+          <CardSection>
+            <GenerateButton>Generate More</GenerateButton>
+          </CardSection>
+        </Card>
+      </CardContain>
     );
   }
 
@@ -74,7 +76,7 @@ export default class SwipeIndex extends React.Component {
       <View>
         <Header />
         <View style={styles.container}>
-        <Text style={styles.textStyle}>Startup Week Navigator</Text>
+          <Text style={styles.textStyle}>Startup Week Navigator</Text>
           <EventDeck
             data={this.state.events}
             renderCard={this.renderCard}

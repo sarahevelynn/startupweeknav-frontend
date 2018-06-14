@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#b8c9c8",
     borderRadius: 4,
     borderWidth: 4,
-    borderColor: "#d6d7da",
+    borderColor: "#d6d7da"
   },
   containerStyle: {
     backgroundColor: "#dce2e2",

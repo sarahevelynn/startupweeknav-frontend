@@ -143,7 +143,7 @@ export default class Form extends Component {
         </View>
         <View
           style={{
-            padding:4,
+            padding: 4,
             borderBottomColor: "#0e4441",
             borderBottomWidth: 2,
             borderRadius: 5
@@ -169,7 +169,8 @@ export default class Form extends Component {
 
     if (!result.cancelled) {
       this.setState({
-        image: "https://s3-us-west-1.amazonaws.com/startupweekcards/card8.jpeg"
+        image:
+          "https://s3-us-west-1.amazonaws.com/startupweekcards/businessCard.jpeg"
       });
     }
   };

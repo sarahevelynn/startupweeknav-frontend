@@ -6,7 +6,6 @@ import CardSection from "../General/CardSection";
 import CardContain from "../General/CardContain";
 
 const EventCard = ({ event }) => {
-
   const {
     image,
     eventName,
@@ -17,13 +16,9 @@ const EventCard = ({ event }) => {
     register,
     tickets
   } = event;
-  const {
-    cardContentStyle,
-    cardInfoStyle,
-    cardTicketStyle,
-  } = styles;
+  const { cardContentStyle, cardInfoStyle, cardTicketStyle } = styles;
   return (
-    <View >
+    <View>
       <CardContain>
         <Card
           key={event.id}
@@ -44,10 +39,8 @@ const EventCard = ({ event }) => {
             <Text>{eventDescription}</Text>
           </CardSection>
 
-          <CardSection >
-            <Button >
-              {event.register}
-            </Button>
+          <CardSection>
+            <Button>{event.register}</Button>
             <Button
               onPress={() => Linking.openURL(event.tickets)}
               value={event.tickets}

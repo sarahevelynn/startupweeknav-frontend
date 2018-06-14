@@ -5,12 +5,10 @@ const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
-    <Text style={textStyle}>
-    {children}
-    </Text>
+      <Text style={textStyle}>{children}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = {
   textStyle: {
@@ -18,7 +16,7 @@ const styles = {
     color: "#063835",
     fontSize: 17,
     fontWeight: "700",
-    padding: 10,
+    padding: 10
   },
   buttonStyle: {
     backgroundColor: "#fff",
@@ -26,8 +24,8 @@ const styles = {
     borderWidth: 1,
     borderColor: "#063835",
     marginLeft: 5,
-    marginRight: 5,
+    marginRight: 5
   }
-}
+};
 
 export default Button;

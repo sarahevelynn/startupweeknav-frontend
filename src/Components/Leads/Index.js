@@ -111,7 +111,7 @@ class MyScene extends React.Component {
               <Text style={styles.text}>View Leads</Text>
             </Icon.Button>
           </View>
-          <View style={{height:20}}/>
+          <View style={{ height: 20 }} />
         </View>
         <Image source={require("./denver.png")} />
       </View>
@@ -127,12 +127,12 @@ const styles = StyleSheet.create({
     borderColor: "#d6d7da"
   },
   header: {
-    height: 65
+    height: 63
   },
   title: {
     fontSize: 30,
     fontWeight: "800",
-    color:"#215e5b",
+    color: "#215e5b",
     textAlign: "center",
     borderWidth: 4,
     borderRadius: 10,
